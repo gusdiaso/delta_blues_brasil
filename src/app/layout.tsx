@@ -1,6 +1,11 @@
 import type { Metadata } from 'next'
 import './globals.css'
 import { Darker_Grotesque } from 'next/font/google'
+import { config } from '@fortawesome/fontawesome-svg-core'
+import '@fortawesome/fontawesome-svg-core/styles.css'
+
+// 👉 Evita o carregamento automático do CSS interno
+config.autoAddCss = false
 
 const darkerGrotesque = Darker_Grotesque({
     subsets: ['latin'],
