@@ -2,16 +2,17 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 import { faCheckCircle } from '@fortawesome/free-solid-svg-icons'
 import Image from 'next/image'
 
-export default function MetodologiaEDiferencial() {
-    const lista = [
-        'Lorem ipsum dolor sit amet, consectetur adipiscing elit.',
-        'Vestibulum pretium sed libero id iaculis',
-        'Sed lacus sapien, scelerisque ut euismod vel cupidat.',
-        'Sed ultrices lorem in commodo scelerisque.',
-        'Cras ac suscipit nibh.',
-        'Cras sed metus porttitor, fringilla magna vitae.'
-    ]
+interface CardProps {
+    image: string
+    title: string
+    description: string[]
+}
 
+export default function MetodologiaEDiferencial({
+    image,
+    title,
+    description
+}: CardProps) {
     return (
         <section className="py-12 px-4 w-full">
             <div className="flex flex-col items-center text-center max-w-3xl mx-auto px-4 sm:px-8">
@@ -20,20 +21,23 @@ export default function MetodologiaEDiferencial() {
                     <Image
                         width={65}
                         height={65}
-                        src="/images/earning.png"
+                        src={image}
                         alt="Ícone metodologia diferencial"
                     />
                 </div>
 
                 {/* Título */}
-                <h2 className="text-sky-600 font-bold text-2xl sm:text-3xl md:text-4xl leading-tight mb-6">
-                    Metodologia <br /> e diferencial
+                <h2
+                    className="text-sky-600 font-bold text-2xl sm:text-3xl md:text-4xl leading-tight mb-6"
+                    style={{ whiteSpace: 'pre-line' }}
+                >
+                    {title}
                 </h2>
 
                 {/* Lista */}
                 <div className="bg-white rounded-xl p-6 sm:p-8 w-full shadow-md">
                     <ul className="text-left space-y-4">
-                        {lista.map((item, index) => (
+                        {description.map((item: string, index: number) => (
                             <li key={index} className="flex items-start gap-3">
                                 <FontAwesomeIcon
                                     icon={faCheckCircle}
